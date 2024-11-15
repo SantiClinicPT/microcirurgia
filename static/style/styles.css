@@ -25,14 +25,52 @@ body, html {
 
 form{
     width: 30%;
-    margin: auto;
-    border: 2px solid black;
+    margin: 10px auto;
+    border: 3px solid white;
+    border-radius: 30px;
+    background-color: white ;
 }
 
 .input_class{
     width: 90%;
-    height: 30px;
-    margin: auto;
+    height: 40px;
+    margin-left: 5%;
     font-size: 25px;
-    align-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+    margin: 25px auto;
+}
+
+.logo img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.input_class_submit{
+    width: 30%;
+    height: 50px;
+    margin-left: 35%;
+    font-size: 30px;
+    align-items: center;
+    background-color: rgb(16, 183, 80);
+    border-radius: 15px;
+}
+
+.input_class_selection{
+    width: 91%;
+    margin-left: 5%;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 15px;
+}
+
+.label{
+    margin:0px 0px 0px 25px;
+    font-size: 25px;
+    padding: 0;
 }

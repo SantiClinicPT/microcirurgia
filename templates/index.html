@@ -8,9 +8,15 @@
 </head>
 <body>
 <form method="post" action="/">
-    <div class="logo"></div>
+    <header_form>
+        <div class="logo"><img src="/static/img/photo_2024-11-15_17-02-08 (2).jpg" alt="LOGO"></div>
+    </header_form>
+    
     {% for field in form %}
         {% if not loop.last %}
+            <p class="label">
+                {{ field.label }}
+            </p>
             <p>
                 {{ field }}
             </p>

@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from wtforms.validators import email
+from wtforms import BooleanField
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
