@@ -1,0 +1,22 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Style the image container */
+.image-container {
+    height: 100%; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+/* Make the image cover the full container */
+.hero-image {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
