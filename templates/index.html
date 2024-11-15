@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Partner Ship</title>
-    <link rel="stylesheet" type="text/css" href="../static/style/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/style/styles.css">
     <title>Partner Ship</title>
 </head>
 <body>
-<h1 class="lol">Boris Isac</h1>
 <form method="post" action="/">
+    <div class="logo"></div>
     {% for field in form %}
         {% if not loop.last %}
             <p>
-                {{ field.label }}
                 {{ field }}
             </p>
         {% endif %}

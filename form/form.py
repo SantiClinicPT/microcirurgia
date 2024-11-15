@@ -23,31 +23,41 @@ procedure_list = [
 class PartnerShipForm(FlaskForm):
     nome = StringField(
         'Nome',
-        [validators.Length(min=4, max=25)]
+        [validators.Length(min=4, max=25)],
+        render_kw={"class": "input_class", "placeholder": "Introduz o seu Nome"}
     )
     apelido = StringField(
         'Apelido',
-        [validators.Length(min=4, max=25)]
+        [validators.Length(min=4, max=25)],
+        render_kw={"class": "input_class", "placeholder": "Introduz o seu Apelido"}
+
     )
+    
     tel = StringField(
         'Telefone',
-        [validators.Length(min=9, max=14)]
+        [validators.Length(min=9, max=14)],
+        render_kw={"class": "input_class", "placeholder": "Introduz o seu contacto telefonico"}
     )
+    
     email = EmailField(
         'Email',
-        [validators.Length(min=6, max=35)])
+        [validators.Length(min=6, max=35)],
+        render_kw={"class": "input_class", "placeholder": "Introduz o seu Email"}
+    )
+    
     partner_ship_list = SelectField(
         'Partner', choices = [
-            (partner, partner) for partner in partners_list
-
-        ],
-        render_kw = {"placeholder": "Select a partner"}
+            (partner, partner) for partner in partners_list],
+        render_kw = {"class": "input_class"}
     )
 
     procedure_list = SelectField(
         'Procedure', choices=[
             (procedure, procedure) for procedure in procedure_list
         ],
-        render_kw={"placeholder": "Select a procedure"}
+        render_kw={"class": "input_class"}
     )
-    submit = SubmitField("Submit")
+    submit = SubmitField(
+        "Submeter", 
+        render_kw={"class": "input_class_submit"}
+        )
