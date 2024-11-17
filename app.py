@@ -17,7 +17,12 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
     form = PartnerShipForm()
+    context = {
+        'form' : form
+    }
+    
     if request.method == 'POST':
         nome = form.nome.data
         apelido = form.apelido.data
@@ -53,9 +58,10 @@ def index():
             server.sendmail(MAIL_SENDER, TO_EMAIL_PARSERIA, text)
             server.quit()
             print("Email has been sended!")
+            context['suxcess_msg'] = "Obrigado por enviar os seus dados"
         except Exception as e:
             print(f"Email has not been sended by error: {e}")
-    return render_template('index.html', form=form)
+    return render_template('index.html', **context)
 
 
 if __name__ == '__main__':

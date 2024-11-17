@@ -10,7 +10,6 @@ from wtforms.validators import DataRequired, Email
 
 partners_list = [
     'Márcia Monteiro Micropigmentação'
-
 ]
 
 procedure_list = [
@@ -26,46 +25,42 @@ class PartnerShipForm(FlaskForm):
     nome = StringField(
         'Nome',
         [validators.Length(min=4, max=25)],
-        render_kw={"class": "input_class", "placeholder": "Introduz o seu Nome"}
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu Nome"}
     )
     apelido = StringField(
         'Apelido',
         [validators.Length(min=4, max=25)],
-        render_kw={"class": "input_class", "placeholder": "Introduz o seu Apelido"}
-
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu Apelido"}
     )
-    
     tel = StringField(
         'Telefone',
         [validators.Length(min=9, max=14)],
-        render_kw={"class": "input_class", "placeholder": "Introduz o seu contacto telefonico"}
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu contacto telefonico"}
     )
-    
     email = EmailField(
         'Email',
-        [validators.Length(min=6, max=35)],
-        render_kw={"class": "input_class", "placeholder": "Introduz o seu Email"}
+        [validators.Email(), validators.Length(min=6, max=35)],
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu Email"}
     )
-    
     partner_ship_list = SelectField(
-        'Partner', choices = [
-            (partner, partner) for partner in partners_list],
-        render_kw = {"class": "input_class_selection"}
-    )
-
+    'Parceiro(a)',
+    choices=[("", "Selecione um parceiro(a)")] + [(partner, partner) for partner in partners_list],
+    render_kw={
+        "class": "input_class_selection",
+        "placeholder": "Selecione um parceiro(a)"
+    }
+)
     procedure_list = SelectField(
-        'Procedure', choices=[
-            (procedure, procedure) for procedure in procedure_list
-        ],
+        'Procedimento',
+        choices= [("", "Selecione uma procedimento")] +[(procedure, procedure) for procedure in procedure_list],
         render_kw={"class": "input_class_selection"}
     )
-
-    checkbox = BooleanField('Eu concordo em partilhar minhas informações de contato com o propósito de ser contactado pela Santiclinic',
-              default=True,
-              render_kw ={'checked':''})
-
-
+    checkbox = BooleanField(
+        'Eu concordo em partilhar minhas informações de contato com o propósito de ser contactado pela Santiclinic',
+        default=True,
+        render_kw={"class": "custom_checkbox"}
+    )
     submit = SubmitField(
-        "Submeter", 
+        "Enviar", 
         render_kw={"class": "input_class_submit"}
-        )
+    )
