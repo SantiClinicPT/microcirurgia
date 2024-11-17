@@ -1,5 +1,6 @@
 from random import choices
 from select import select
+from wtforms import BooleanField
 
 from flask_wtf import FlaskForm
 from wtforms.fields.choices import SelectField
@@ -23,31 +24,58 @@ procedure_list = [
 class PartnerShipForm(FlaskForm):
     nome = StringField(
         'Nome',
-        [validators.Length(min=4, max=25)]
+        [
+            DataRequired(message="Este campo é obrigatório."), 
+            validators.Length(min=4, max=25)
+        ],
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu Nome"}
     )
     apelido = StringField(
         'Apelido',
-        [validators.Length(min=4, max=25)]
+        [
+            DataRequired(message="Este campo é obrigatório."), 
+            validators.Length(min=4, max=25)
+        ],
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu Apelido"}
     )
     tel = StringField(
         'Telefone',
-        [validators.Length(min=9, max=14)]
+        [
+            DataRequired(message="Este campo é obrigatório."), 
+            validators.Length(min=9, max=14)
+         ],
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu contacto telefonico"}
     )
     email = EmailField(
         'Email',
-        [validators.Length(min=6, max=35)])
+        [
+            DataRequired(message="Este campo é obrigatório."), 
+            validators.Email(), validators.Length(min=6, max=35)
+        ],
+        render_kw={"class": "input_class", "placeholder": "Introduza o seu Email"}
+    )
     partner_ship_list = SelectField(
-        'Partner', choices = [
-            (partner, partner) for partner in partners_list
-
-        ],
-        render_kw = {"placeholder": "Select a partner"}
-    )
-
+    'Parceiro(a)',
+    choices=[("", "Selecione um parceiro(a)")] + [(partner, partner) for partner in partners_list],
+    validators=[DataRequired(message="Por favor, selecione um parceiro(a).")],
+    render_kw={
+        "class": "input_class_selection",
+        "placeholder": "Selecione um parceiro(a)"
+    }
+)
     procedure_list = SelectField(
-        'Procedure', choices=[
-            (procedure, procedure) for procedure in procedure_list
-        ],
-        render_kw={"placeholder": "Select a procedure"}
+        'Procedimento',
+        choices= [("", "Selecione uma procedimento")] +[(procedure, procedure) for procedure in procedure_list],
+        validators=[DataRequired(message="Por favor, selecione um procedimento).")],
+        render_kw={"class": "input_class_selection"}
     )
-    submit = SubmitField("Submit")
+    checkbox = BooleanField(
+        'Eu concordo em partilhar minhas informações de contato com o propósito de ser contactado pela Santiclinic',
+        default=True,
+        validators=[DataRequired(message="Por favor, termos de responsabilidade).")],
+        render_kw={"class": "custom_checkbox"}
+    )
+    submit = SubmitField(
+        "Enviar", 
+        render_kw={"class": "input_class_submit"}
+    )

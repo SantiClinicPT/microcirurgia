@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from wtforms.validators import email
+from wtforms import BooleanField
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -15,8 +17,13 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
     form = PartnerShipForm()
-    if request.method == 'POST':
+    context = {
+        'form' : form
+    }
+    
+    if form.validate_on_submit():
         nome = form.nome.data
         apelido = form.apelido.data
         tel = form.tel.data
@@ -50,10 +57,18 @@ def index():
             text = msg.as_string()
             server.sendmail(MAIL_SENDER, TO_EMAIL_PARSERIA, text)
             server.quit()
+            
+
             print("Email has been sended!")
+            context['suxcess_msg'] = "Obrigado por enviar os seus dados"
+            context['form'] = PartnerShipForm()
+            # Передаем сообщение об успехе
+            return render_template('index.html',  **context)
+
         except Exception as e:
             print(f"Email has not been sended by error: {e}")
-    return render_template('index.html', form=form)
+    
+    return render_template('index.html', **context)
 
 
 if __name__ == '__main__':

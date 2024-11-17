@@ -1,0 +1,215 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: url(../img/background_image.jpg);
+}
+
+
+
+/* Style the image container */
+.image-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Make the image cover the full container */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+form {
+  width: 30%;
+  margin: 50px auto;
+  border: 3px solid white;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.input_class {
+  width: 90%;
+  height: 30px;
+  margin-left: 5%;
+  font-size: 25px;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: 25px auto;
+}
+
+.logo img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.input_class_submit {
+  width: 30%;
+  height: 50px;
+  margin-left: 35%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 30px;
+  align-items: center;
+  background-color: rgb(16, 183, 80);
+  border-radius: 15px;
+}
+
+.input_class_selection {
+  width: 91%;
+  margin-left: 5%;
+  height: 40px;
+  font-size: 25px;
+  border-radius: 15px;
+}
+
+.label {
+  margin: 0px 0px 0px 30px;
+  font-size: 25px;
+  padding: 0;
+}
+
+.chack_input {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+    /* Увеличиваем чекбокс */
+    .custom_checkbox {
+        transform: scale(2); /* Увеличиваем размер */
+        appearance: none; /* Убираем стандартное отображение чекбокса */
+        width: 15px;
+        height: 15px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .suxcess_msg{
+        color: green;
+        width: 70%;
+        font-size: 35px;
+        text-align: center;
+        margin: auto;
+    }
+
+
+    /* Зеленая галочка при выборе */
+    .custom_checkbox:checked {
+        background-color: green; /* Зелёный фон */
+        border-color: green; /* Зелёная рамка */
+    }
+
+    /* Галочка внутри чекбокса */
+    .custom_checkbox:checked::after {
+        content: '✔'; /* Символ галочки */
+        color: white; /* Белая галочка на зелёном фоне */
+        font-size: 16px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Стиль текста */
+    label {
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 10px; /* Отступ между чекбоксом и текстом */
+    }
+
+.description {
+  width: 90%;
+}
+
+#cookies {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  color: white;
+  background-color: rgb(0, 0, 0, 0.7);
+  z-index: 1;
+  /*display: none;*/
+}
+
+.cookies {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cookies a {
+  color: yellow;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#cookies-btn {
+  border-radius: 5px;
+  padding: 8px 12px 8px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: 3px solid white;
+  background-color: black;
+  color: white;
+}
+
+@media (max-width: 1600px) {
+  .container {
+    width: 100%;
+  }
+
+  form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1024) {
+  .cookies {
+    padding: 10px 0;
+  }
+
+  #cookies-btn {
+    margin: 10px 0; /* Add spacing around the button */
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 90%;
+  }
+
+  .input_class {
+    height: 50px;
+  }
+
+  .input_class_selection {
+    height: 50px;
+  }
+
+  .logo {
+    width: 200px;
+    height: 200px;
+    margin: 25px auto;
+  }
+}
